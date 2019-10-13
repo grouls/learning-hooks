@@ -1,37 +1,71 @@
-import React, { useState } from "react";
-import "./styles.css";
+import React, { useState, useEffect } from "react";
+import "./assets/styles.scss";
 
 export default () => {
   const [age, setAge] = useState(0);
-  const [name, setName] = useState("gary");
-  const [nationality, setNationality] = useState("irish");
+  const [name, setName] = useState("");
+  const [country, setCountry] = useState("ireland");
+
   return (
     <div className="App">
-      <h1>Learning Hooks</h1>
-      <p>
-        set name:
-        <input
-          type="text"
-          value={name}
-          onChange={e => setName(e.target.value)}
-        />
-      </p>
-      name: {name}
-      <p>
-        <button onClick={() => setAge(age + 1)}>+</button>
-        <button onClick={() => (age !== 0 ? setAge(age - 1) : null)}>-</button>
-      </p>
-      age: {age}
-      <p>
-        <select onChange={e => setNationality(e.target.value)}>
-          <option>english</option>
-          <option selected>irish</option>
-          <option>scottish</option>
-          <option>northern irish</option>
-          <option>welsh</option>
-        </select>
-      </p>
-      nationality: {nationality}
+      <h1>learning hooks</h1>
+      <div className="container">
+        <div className="row">
+          <div className="col-sm-6">
+            <label>set name:</label>
+          </div>
+          <div className="col-sm-6">
+            <input
+              placeholder="Enter name..."
+              type="text"
+              value={name}
+              onChange={e => setName(e.target.value)}
+            />
+          </div>
+          <div className="col-sm-6">
+            <label>set age: </label>
+          </div>
+          <div className="col-sm-6">
+            <button
+              type="button"
+              className="btn btn-danger"
+              onClick={() => (age !== 0 ? setAge(age - 1) : null)}
+            >
+              -
+            </button>
+            {age}
+            <button
+              type="button"
+              className="btn btn-success"
+              onClick={() => setAge(age + 1)}
+            >
+              +
+            </button>
+          </div>
+          <div className="col-sm-6">
+            <label>set country:</label>
+          </div>
+          <div className="col-sm-6">
+            <div className="dropdown">
+              <select
+                className="btn btn-light dropdown-toggle"
+                onChange={e => setCountry(e.target.value)}
+              >
+                <option>england</option>
+                <option selected>ireland</option>
+                <option>scotland</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="col-sm-12">
+        {name && age !== 0 && (
+          <p>
+            I am {name}, {age} and I am from {country}
+          </p>
+        )}
+      </div>
     </div>
   );
 };
