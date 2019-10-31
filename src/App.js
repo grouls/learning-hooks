@@ -28,14 +28,16 @@ export default () => {
           <div className="col-sm-6">
             <button
               type="button"
+              id="counter-minus"
               className="btn btn-danger"
               onClick={() => (age !== 0 ? setAge(age - 1) : null)}
             >
               -
             </button>
-            {age}
+            <span id="age-label">{age}</span>
             <button
               type="button"
+              id="counter-add"
               className="btn btn-success"
               onClick={() => setAge(age + 1)}
             >
@@ -50,6 +52,7 @@ export default () => {
               <select
                 className="btn btn-light dropdown-toggle"
                 onChange={e => setCountry(e.target.value)}
+                id="country-select"
               >
                 <option>england</option>
                 <option selected>ireland</option>
