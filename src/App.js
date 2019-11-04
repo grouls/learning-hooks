@@ -4,7 +4,7 @@ import "./assets/styles.scss";
 export default () => {
   const [age, setAge] = useState(0);
   const [name, setName] = useState("");
-  const [country, setCountry] = useState("ireland");
+  const [country, setCountry] = useState("");
 
   return (
     <div className="App">
@@ -12,7 +12,7 @@ export default () => {
       <div className="container">
         <div className="row">
           <div className="col-sm-6">
-            <label>set name:</label>
+            <label>set name:</label> {name}
           </div>
           <div className="col-sm-6">
             <input
@@ -46,6 +46,7 @@ export default () => {
           </div>
           <div className="col-sm-6">
             <label>set country:</label>
+            {country}
           </div>
           <div className="col-sm-6">
             <div className="dropdown">
@@ -61,13 +62,6 @@ export default () => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="col-sm-12">
-        {name && age !== 0 && (
-          <p>
-            I am {name}, {age} and I am from {country}
-          </p>
-        )}
       </div>
     </div>
   );
